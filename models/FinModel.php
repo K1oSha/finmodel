@@ -38,11 +38,10 @@ class FinModel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sort_id', 'name', 'descriprion', 'area', 'area_house', 'electro_price', 'water_price', 'price_culture', 'area_id'], 'required'],
-            [['sort_id', 'electro_price', 'water_price', 'area_id'], 'integer'],
+            [['sort_id', 'name', 'descriprion', 'area', 'electro_price', 'water_price'], 'required'],
+            [['sort_id', 'electro_price', 'water_price'], 'integer'],
             [['area', 'area_house'], 'number'],
             [['name', 'descriprion', 'price_culture'], 'string', 'max' => 45],
-            [['area_id'], 'exist', 'skipOnError' => true, 'targetClass' => Area::className(), 'targetAttribute' => ['area_id' => 'id']],
             [['sort_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sort::className(), 'targetAttribute' => ['sort_id' => 'id']],
         ];
     }
@@ -56,11 +55,11 @@ class FinModel extends \yii\db\ActiveRecord
             'id' => 'ID',
             'sort_id' => 'Sort ID',
             'name' => 'Наименование',
-            'descriprion' => 'Descriprion',
-            'area' => 'Area',
+            'descriprion' => 'Описание',
+            'area' => 'Общая посевная площадь',
             'area_house' => 'Area House',
-            'electro_price' => 'Electro Price',
-            'water_price' => 'Water Price',
+            'electro_price' => 'Стоимость электронергии кВт/ч',
+            'water_price' => 'Стоимость воды м3',
             'price_culture' => 'Price Culture',
             'area_id' => 'Area ID',
         ];

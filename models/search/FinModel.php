@@ -17,7 +17,7 @@ class FinModel extends FinModelModel
     public function rules()
     {
         return [
-            [['id', 'sort_id', 'electro_price', 'water_price', 'area_id'], 'integer'],
+            [['id', 'sort_id', 'electro_price', 'water_price'], 'integer'],
             [['name', 'descriprion', 'price_culture'], 'safe'],
             [['area', 'area_house'], 'number'],
         ];
@@ -65,7 +65,6 @@ class FinModel extends FinModelModel
             'area_house' => $this->area_house,
             'electro_price' => $this->electro_price,
             'water_price' => $this->water_price,
-            'area_id' => $this->area_id,
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])

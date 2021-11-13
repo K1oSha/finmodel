@@ -109,11 +109,10 @@ CREATE TABLE IF NOT EXISTS `finmodel`.`fin_model` (
   `name` VARCHAR(45) NOT NULL,
   `descriprion` VARCHAR(45) NOT NULL,
   `area` FLOAT NOT NULL,
-  `area_house` FLOAT NOT NULL,
+  `area_house` FLOAT NOT NULL DEFAULT 0,
   `electro_price` INT NOT NULL,
   `water_price` INT NOT NULL,
   `price_culture` VARCHAR(45) NOT NULL,
-  `area_id` INT NOT NULL,
   PRIMARY KEY (`id`, `sort_id`, `area_id`),
   INDEX `fk_fin_model_Sort1_idx` (`sort_id` ASC) VISIBLE,
   INDEX `fk_fin_model_area1_idx` (`area_id` ASC) VISIBLE,
@@ -122,11 +121,6 @@ CREATE TABLE IF NOT EXISTS `finmodel`.`fin_model` (
     REFERENCES `finmodel`.`sort` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
-  CONSTRAINT `fk_fin_model_area1`
-    FOREIGN KEY (`area_id`)
-    REFERENCES `finmodel`.`area` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 

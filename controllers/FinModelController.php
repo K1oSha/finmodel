@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use app\models\Area;
+use app\models\Cultura;
 use app\models\FinModel;
 use app\models\forms\FinModelForm;
 use app\models\search\FinModel as FinModelSearch;
@@ -58,10 +59,10 @@ class FinModelController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $sort_id, $area_id)
+    public function actionView($id, $sort_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $sort_id, $area_id),
+            'model' => $this->findModel($id, $sort_id),
         ]);
     }
 
@@ -74,13 +75,10 @@ class FinModelController extends Controller
     {
         $model = new FinModel();
         $model->sort_id = $sort_id;
-
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'sort_id' => $model->sort_id, 'area_id' => $model->area_id]);
+                return $this->redirect(['view', 'id' => $model->id, 'sort_id' => $model->sort_id]);
             }
-        } else {
-            $model->loadDefaultValues();
         }
         return $this->render('create', [
             'model' => $model,
@@ -164,9 +162,9 @@ class FinModelController extends Controller
      * @return FinModel the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $sort_id, $area_id)
+    protected function findModel($id)
     {
-        if (($model = FinModel::findOne(['id' => $id, 'sort_id' => $sort_id, 'area_id' => $area_id])) !== null) {
+        if (($model = FinModel::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

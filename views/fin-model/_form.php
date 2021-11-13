@@ -12,26 +12,18 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'sort_id')->textInput() ?>
-
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'descriprion')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'descriprion')->textarea(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'area')->textInput() ?>
-
-    <?= $form->field($model, 'area_house')->textInput() ?>
 
     <?= $form->field($model, 'electro_price')->textInput() ?>
 
     <?= $form->field($model, 'water_price')->textInput() ?>
 
-    <?= $form->field($model, 'price_culture')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'area_id')->textInput() ?>
-
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Сохранить', ['class' => ' mt-4 btn btn-outline-success']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

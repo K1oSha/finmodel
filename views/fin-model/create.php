@@ -15,15 +15,12 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="fin-model-create">
 
     <h3><?= Html::encode($this->title) ?></h3>
-    <p>
+   
+    <div class="col-5">
+    <p class="h5">
         Задайте вводные данные для составления финансовой модели по выращиванию культуры: 
-        <?
-        $sort = Sort::findOne($model->sort_id);
-         $culture = Cultura::findOne($sort->cultura_id);  
-         echo Html::a($culture->name  . ' '.  $sort->name  
-         ,['/sort/view', 'id' => $model->sort_id])?>
+        <? $sort = Sort::findOne($model->sort_id);$culture = Cultura::findOne($sort->cultura_id);  echo Html::a($culture->name  . ' '.  $sort->name  ,['/sort/view', 'id' => $model->sort_id])?>
     </p>
-    <div class="col-4">
         <?= $this->render('_form', [
             'model' => $model,
         ]) ?>
