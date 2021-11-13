@@ -2,18 +2,12 @@
 
 namespace app\controllers;
 
-use app\models\Company;
-use app\models\forms\RecoveryForm;
+use app\models\User;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
-use yii\web\Response;
-use yii\filters\VerbFilter;
 use app\models\forms\LoginForm;
-use app\models\Contractor;
 use app\models\forms\RegisterForm;
-use phpDocumentor\Reflection\Types\Object_;
-use yii\httpclient\Client;
 class SiteController extends Controller
 {
     /**
@@ -22,10 +16,20 @@ class SiteController extends Controller
     public function behaviors()
     {
         return [
-            'verbs' => [
-                'class' => VerbFilter::class,
-                'actions' => [
-                    'logout' => ['post'],
+            'access' => [
+                'class' => AccessControl::class,
+                'only' => ['logout', 'login', 'register'],
+                'rules' => [
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                    [
+                        'actions' => ['login', 'register'],
+                        'allow' => true,
+                        'roles' => ['?'],
+                    ],
                 ],
             ],
         ];
@@ -51,6 +55,52 @@ class SiteController extends Controller
     public function actionIndex()
     {
         return $this->render('index');
+    }
+
+
+
+    public function actionLogin()
+    {
+        $this->layout = 'auth';
+
+        $model = new LoginForm();
+        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+            return $this->goBack();
+        }
+
+        return $this->render('login', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionRegister()
+    {
+        $this->layout = 'auth';
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new RegisterForm();
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
+            $user = new User();
+            $user->setAttributes($model->attributes);
+            $user->password = hash('sha256', $user->password);
+            if ($user->save()) {
+
+                return $this->goHome();
+            }
+        }
+
+        return $this->render('register', [
+            'model' => $model,
+        ]);
+    }
+
+    public function actionLogout()
+    {
+        Yii::$app->user->logout();
+
+        return $this->goHome();
     }
 
 }

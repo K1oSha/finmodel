@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Sort */
 
-$this->title = 'Update Sort: ' . $model->name;
+$this->title = 'Изменение сорта культуры: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Sorts', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id, 'сultura_id' => $model->сultura_id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменение';
 ?>
 <div class="sort-update">
 

@@ -5,10 +5,10 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cultura */
 
-$this->title = 'Update Cultura: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Culturas', 'url' => ['index']];
+$this->title = 'Изменение информации о культуре : ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Культуры', 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->params['breadcrumbs'][] = 'Изменение';
 ?>
 <div class="cultura-update">
 

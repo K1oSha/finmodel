@@ -20,7 +20,7 @@ use Yii;
  * @property string $area_number
  *
  * @property FinModel[] $finModels
- * @property Cultura $�ultura
+ * @property Cultura cultura
  */
 class Sort extends \yii\db\ActiveRecord
 {
@@ -53,15 +53,15 @@ class Sort extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Наименование',
-            'cultura_id' => 'cultura ID',
+            'cultura_id' => 'Наименование культуры',
             'plus' => 'Преимущества',
             'minus' => 'Недостатки',
             'profit' => 'Урожайность',
             'tovarnost' => 'Товарность',
             'time_grow' => 'Длительность цикла',
             'lejcost' => 'Лежкость',
-            'price' => 'Price',
-            'area_number' => 'Area Number',
+            'price' => 'Стоимость',
+            'area_number' => 'Регионы допуска',
         ];
     }
 

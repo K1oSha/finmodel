@@ -17,7 +17,7 @@ class Sort extends SortModel
     public function rules()
     {
         return [
-            [['id', 'сultura_id', 'profit'], 'integer'],
+            [['id', 'cultura_id', 'profit'], 'integer'],
             [['name', 'plus', 'minus', 'tovarnost', 'time_grow', 'lejcost', 'area_number'], 'safe'],
             [['price'], 'number'],
         ];
@@ -60,7 +60,7 @@ class Sort extends SortModel
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'сultura_id' => $this->сultura_id,
+            'cultura_id' => $this->cultura_id,
             'profit' => $this->profit,
             'price' => $this->price,
         ]);

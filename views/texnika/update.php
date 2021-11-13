@@ -5,10 +5,9 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Texnika */
 
-$this->title = 'Update Texnika: ' . $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Texnikas', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
-$this->params['breadcrumbs'][] = 'Update';
+$this->title = 'Изменение записи : ' . $model->name;
+$this->params['breadcrumbs'][] = ['label' => 'Реестр техники', 'url' => ['index']];
+$this->params['breadcrumbs'][] = 'Изменение';
 ?>
 <div class="texnika-update">
 

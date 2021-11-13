@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\search\Cultura */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Culturas';
+$this->title = 'Культуры';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cultura-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Cultura', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить культуру', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -27,10 +27,12 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'header'=>"Действия",
+                'template' => '{update} {delete}'
+            ],
         ],
     ]); ?>
 

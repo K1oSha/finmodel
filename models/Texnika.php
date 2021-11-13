@@ -32,10 +32,10 @@ class Texnika extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'texnikacol', 'toplivo', 'norma', 'price'], 'required'],
+            [['name', 'toplivo', 'norma', 'price'], 'required'],
             [['name'], 'integer'],
             [['toplivo', 'norma'], 'number'],
-            [['texnikacol', 'price'], 'string', 'max' => 45],
+            [['price'], 'string', 'max' => 45],
         ];
     }
 
@@ -46,11 +46,10 @@ class Texnika extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'texnikacol' => 'Texnikacol',
-            'toplivo' => 'Toplivo',
-            'norma' => 'Norma',
-            'price' => 'Price',
+            'name' => 'Название',
+            'toplivo' => 'Расход ГСМ на 100 км',
+            'norma' => 'Норма выроботки',
+            'price' => 'Стоимость',
         ];
     }
 

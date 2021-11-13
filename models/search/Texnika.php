@@ -18,7 +18,7 @@ class Texnika extends TexnikaModel
     {
         return [
             [['id', 'name'], 'integer'],
-            [['texnikacol', 'price'], 'safe'],
+            [['price'], 'safe'],
             [['toplivo', 'norma'], 'number'],
         ];
     }
@@ -65,8 +65,7 @@ class Texnika extends TexnikaModel
             'norma' => $this->norma,
         ]);
 
-        $query->andFilterWhere(['like', 'texnikacol', $this->texnikacol])
-            ->andFilterWhere(['like', 'price', $this->price]);
+        $query->andFilterWhere(['like', 'price', $this->price]);
 
         return $dataProvider;
     }
