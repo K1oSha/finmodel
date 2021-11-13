@@ -23,7 +23,6 @@ USE `finmodel` ;
 CREATE TABLE IF NOT EXISTS `finmodel`.`texnika` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` INT NOT NULL,
-  `texnikacol` VARCHAR(45) NOT NULL,
   `toplivo` FLOAT NOT NULL,
   `norma` FLOAT NOT NULL,
   `price` VARCHAR(45) NOT NULL,

@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\search\Texnika */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Texnikas';
+$this->title = 'Реестр техники';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="texnika-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Texnika', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить технику в реестр', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -27,14 +27,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'texnikacol',
             'toplivo',
             'norma',
-            //'price',
-
-            ['class' => 'yii\grid\ActionColumn'],
+            'price',
+            ['class' => 'yii\grid\ActionColumn',
+                'header'=>"Действия",
+                'template' => '{update} {delete}'
+            ],
         ],
     ]); ?>
 

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Cultura */
 
-$this->title = 'Create Cultura';
-$this->params['breadcrumbs'][] = ['label' => 'Culturas', 'url' => ['index']];
+$this->title = 'Добавление культуры';
+$this->params['breadcrumbs'][] = ['label' => 'Культуры', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="cultura-create">

@@ -5,8 +5,8 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model app\models\Sort */
 
-$this->title = 'Create Sort';
-$this->params['breadcrumbs'][] = ['label' => 'Sorts', 'url' => ['index']];
+$this->title = 'Добавить сорт';
+$this->params['breadcrumbs'][] = ['label' => 'Сорта культур', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sort-create">

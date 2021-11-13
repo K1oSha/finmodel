@@ -7,7 +7,7 @@ use yii\widgets\Pjax;
 /* @var $searchModel app\models\search\Sort */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Sorts';
+$this->title = 'Сорта культур';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="sort-index">
@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Sort', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить сорт', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -27,9 +27,13 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'сultura_id',
+            [
+                    'attribute' => 'cultura_id',
+                    'value'=>function($model){return $model->cultura->name;},
+                    'filter'=>\app\models\Cultura::getCultures()
+            ],
+
             'plus',
             'minus',
             //'profit',
