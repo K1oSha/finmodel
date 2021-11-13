@@ -124,12 +124,12 @@ class FinModelController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $sort_id, $area_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $sort_id, $area_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'sort_id' => $model->sort_id, 'area_id' => $model->area_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -146,9 +146,9 @@ class FinModelController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $sort_id, $area_id)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $sort_id, $area_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }

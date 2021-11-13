@@ -13,7 +13,7 @@ use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $model app\models\FinModel */
 
-$this->title = 'Create Fin Model';
+$this->title = 'Создание финансовой модели';
 $this->params['breadcrumbs'][] = ['label' => 'Fin Models', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>

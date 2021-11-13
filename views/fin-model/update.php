@@ -7,7 +7,7 @@ use yii\helpers\Html;
 
 $this->title = 'Update Fin Model: ' . $model->name;
 $this->params['breadcrumbs'][] = ['label' => 'Fin Models', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id, 'sort_id' => $model->sort_id, 'area_id' => $model->area_id]];
+$this->params['breadcrumbs'][] = ['label' => $model->name, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="fin-model-update">
