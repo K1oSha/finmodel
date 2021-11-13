@@ -16,29 +16,23 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
-            'class' => 'btn btn-danger',
+        <?= Html::a('Изменить параметры', ['update', 'id' => $model->id], ['class' => 'btn btn-outline-primary']) ?>
+        <?= Html::a('Удалить', ['delete', 'id' => $model->id], [
+            'class' => 'btn btn-outline-danger',
             'data' => [
-                'confirm' => 'Are you sure you want to delete this item?',
+                'confirm' => 'Вы уверены что хотите удалить эту модель?',
                 'method' => 'post',
             ],
         ]) ?>
     </p>
 
-    <?= DetailView::widget([
-        'model' => $model,
-        'attributes' => [
-            'id',
-            'sort_id',
-            'name',
-            'descriprion',
-            'area',
-            'area_house',
-            'electro_price',
-            'water_price',
-            'price_culture',
-        ],
-    ]) ?>
-
+    <div class="row h-10 border border-1 rounded">
+        <div class="d-flex justify-content-start">
+            <p class="h4 m-4">ИТОГО ВЫРУЧКА</p>
+            <div>
+                <strong><p>План</p><strong>
+                <strong><p>Факт</p><strong>
+            </div>
+        </div>
+    </div>
 </div>

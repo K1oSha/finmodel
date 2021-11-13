@@ -59,10 +59,10 @@ class FinModelController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $sort_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $sort_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -77,7 +77,7 @@ class FinModelController extends Controller
         $model->sort_id = $sort_id;
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'sort_id' => $model->sort_id]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         }
         return $this->render('create', [
