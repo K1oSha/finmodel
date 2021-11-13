@@ -9,7 +9,7 @@ use Yii;
  *
  * @property int $id
  * @property string $name
- * @property int $сultura_id
+ * @property int $cultura_id
  * @property string $plus
  * @property string $minus
  * @property int $profit
@@ -20,7 +20,7 @@ use Yii;
  * @property string $area_number
  *
  * @property FinModel[] $finModels
- * @property Cultura $�ultura
+ * @property Cultura $�ultura
  */
 class Sort extends \yii\db\ActiveRecord
 {
@@ -38,14 +38,13 @@ class Sort extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'сultura_id', 'plus', 'minus', 'profit', 'tovarnost', 'time_grow', 'lejcost', 'price', 'area_number'], 'required'],
-            [['сultura_id', 'profit'], 'integer'],
+            [['name', 'cultura_id', 'plus', 'minus', 'profit', 'tovarnost', 'time_grow', 'lejcost', 'price', 'area_number'], 'required'],
+            [['cultura_id', 'profit'], 'integer'],
             [['price'], 'number'],
             [['name', 'plus', 'minus', 'tovarnost', 'time_grow', 'lejcost', 'area_number'], 'string', 'max' => 45],
-            [['сultura_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cultura::className(), 'targetAttribute' => ['сultura_id' => 'id']],
+            [['cultura_id'], 'exist', 'skipOnError' => true, 'targetClass' => Cultura::className(), 'targetAttribute' => ['cultura_id' => 'id']],
         ];
     }
-
     /**
      * {@inheritdoc}
      */
@@ -53,14 +52,14 @@ class Sort extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
-            'сultura_id' => 'Сultura ID',
-            'plus' => 'Plus',
-            'minus' => 'Minus',
-            'profit' => 'Profit',
-            'tovarnost' => 'Tovarnost',
-            'time_grow' => 'Time Grow',
-            'lejcost' => 'Lejcost',
+            'name' => 'Наименование',
+            'cultura_id' => 'cultura ID',
+            'plus' => 'Преимущества',
+            'minus' => 'Недостатки',
+            'profit' => 'Урожайность',
+            'tovarnost' => 'Товарность',
+            'time_grow' => 'Длительность цикла',
+            'lejcost' => 'Лежкость',
             'price' => 'Price',
             'area_number' => 'Area Number',
         ];
@@ -75,14 +74,13 @@ class Sort extends \yii\db\ActiveRecord
     {
         return $this->hasMany(FinModel::className(), ['sort_id' => 'id']);
     }
-
     /**
-     * Gets query for [[Сultura]].
+     * Gets query for [[cultura]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getСultura()
+    public function getCultura()
     {
-        return $this->hasOne(Cultura::className(), ['id' => 'сultura_id']);
+        return $this->hasOne(Cultura::className(), ['id' => 'cultura_id']);
     }
 }

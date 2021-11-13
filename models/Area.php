@@ -64,6 +64,11 @@ class Area extends \yii\db\ActiveRecord
         return $this->hasOne(Cultura::className(), ['id' => 'cultura_id']);
     }
 
+    public static function getAreasByRegion($region_id)
+    {
+        return Area::find()->where(['region_id' => $region_id])->all();
+    }
+
     /**
      * Gets query for [[Region]].
      *

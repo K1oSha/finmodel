@@ -16,7 +16,9 @@ use Yii;
  * @property int $electro_price
  * @property int $water_price
  * @property string $price_culture
+ * @property int $area_id
  *
+ * @property Area $area0
  * @property Expense[] $expenses
  * @property Sort $sort
  */
@@ -36,10 +38,11 @@ class FinModel extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['sort_id', 'name', 'descriprion', 'area', 'area_house', 'electro_price', 'water_price', 'price_culture'], 'required'],
-            [['sort_id', 'electro_price', 'water_price'], 'integer'],
+            [['sort_id', 'name', 'descriprion', 'area', 'area_house', 'electro_price', 'water_price', 'price_culture', 'area_id'], 'required'],
+            [['sort_id', 'electro_price', 'water_price', 'area_id'], 'integer'],
             [['area', 'area_house'], 'number'],
             [['name', 'descriprion', 'price_culture'], 'string', 'max' => 45],
+            [['area_id'], 'exist', 'skipOnError' => true, 'targetClass' => Area::className(), 'targetAttribute' => ['area_id' => 'id']],
             [['sort_id'], 'exist', 'skipOnError' => true, 'targetClass' => Sort::className(), 'targetAttribute' => ['sort_id' => 'id']],
         ];
     }
@@ -52,14 +55,25 @@ class FinModel extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'sort_id' => 'Sort ID',
-            'name' => 'Name',
+            'name' => 'Наименование',
             'descriprion' => 'Descriprion',
             'area' => 'Area',
             'area_house' => 'Area House',
             'electro_price' => 'Electro Price',
             'water_price' => 'Water Price',
             'price_culture' => 'Price Culture',
+            'area_id' => 'Area ID',
         ];
+    }
+
+    /**
+     * Gets query for [[Area0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getArea0()
+    {
+        return $this->hasOne(Area::className(), ['id' => 'area_id']);
     }
 
     /**

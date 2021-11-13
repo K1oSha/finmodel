@@ -36,9 +36,9 @@ AppAsset::register($this);
         </a>
         <ul style="overflow-x: hidden; overflow-y: auto" class="sidebar-scroll nav nav-pills nav-flush mb-auto text-center">
             <li class="nav-item flex-fill">
-                <?= Html::a('<i class="fas fa-2x fa-briefcase"></i>', [], [
+                <?= Html::a('<i class="fas fa-2x fa-briefcase"></i>', ['/fin-model'], [
                         'class' => 'nav-link active py-3 border-bottom',
-                        'title' => Yii::t('app', 'Мои компании'),
+                        'title' => 'Финансовые модели',
                         'data-bs-toggle' => 'tooltip',
                         'data-bs-placement' => 'right',
                 ]) ?>

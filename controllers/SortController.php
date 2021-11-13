@@ -53,10 +53,10 @@ class SortController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $сultura_id)
+    public function actionView($id, $cultura_id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $сultura_id),
+            'model' => $this->findModel($id, $cultura_id),
         ]);
     }
 
@@ -71,7 +71,7 @@ class SortController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'сultura_id' => $model->сultura_id]);
+                return $this->redirect(['view', 'id' => $model->id, 'cultura_id' => $model->cultura_id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -86,16 +86,16 @@ class SortController extends Controller
      * Updates an existing Sort model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @param int $сultura_id Сultura ID
+     * @param int $cultura_id cultura ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $сultura_id)
+    public function actionUpdate($id, $cultura_id)
     {
-        $model = $this->findModel($id, $сultura_id);
+        $model = $this->findModel($id, $cultura_id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'сultura_id' => $model->сultura_id]);
+            return $this->redirect(['view', 'id' => $model->id, 'cultura_id' => $model->сultura_id]);
         }
 
         return $this->render('update', [
@@ -107,13 +107,13 @@ class SortController extends Controller
      * Deletes an existing Sort model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @param int $сultura_id Сultura ID
+     * @param int $cultura_id cultura ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $сultura_id)
+    public function actionDelete($id, $cultura_id)
     {
-        $this->findModel($id, $сultura_id)->delete();
+        $this->findModel($id, $cultura_id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -126,9 +126,9 @@ class SortController extends Controller
      * @return Sort the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $сultura_id)
+    protected function findModel($id, $cultura_id)
     {
-        if (($model = Sort::findOne(['id' => $id, 'сultura_id' => $сultura_id])) !== null) {
+        if (($model = Sort::findOne(['id' => $id, 'cultura_id' => $cultura_id])) !== null) {
             return $model;
         }
 

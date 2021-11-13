@@ -22,7 +22,6 @@ class Cultura extends \yii\db\ActiveRecord
     {
         return 'cultura';
     }
-
     /**
      * {@inheritdoc}
      */
@@ -62,6 +61,6 @@ class Cultura extends \yii\db\ActiveRecord
      */
     public function getSorts()
     {
-        return $this->hasMany(Sort::className(), ['сultura_id' => 'id']);
+        return $this->hasMany(Sort::className(), ['cultura_id' => 'id']);
     }
 }

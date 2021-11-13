@@ -61,6 +61,12 @@ class AreaController extends Controller
         ]);
     }
 
+    public function actionGetAreas($region_id)
+    {
+        \Yii::$app->response->format = \yii\web\Response::FORMAT_JSON;
+        return Area::find()->where(['region_id' => $region_id])->all();
+    }
+
     /**
      * Creates a new Area model.
      * If creation is successful, the browser will be redirected to the 'view' page.

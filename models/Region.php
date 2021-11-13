@@ -55,4 +55,9 @@ class Region extends \yii\db\ActiveRecord
     {
         return $this->hasMany(Area::className(), ['region_id' => 'id']);
     }
+
+    public static function getAllRegions()
+    {
+        return Region::find()->all();
+    }
 }

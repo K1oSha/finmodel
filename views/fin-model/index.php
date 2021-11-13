@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Fin Model', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Fin Model', ['start'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -23,19 +23,14 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
+        //'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'sort_id',
             'name',
-            'descriprion',
-            'area',
-            //'area_house',
-            //'electro_price',
-            //'water_price',
-            //'price_culture',
+            'area_id',
+            'description',
+            'sort_id',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

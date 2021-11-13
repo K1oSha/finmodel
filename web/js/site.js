@@ -19,3 +19,26 @@ window.onbeforeunload = function() {
 function preloaderStart() {
     $('body').prepend('<div class="preloader-it"> <div class="spinner-border text-dark" role="status"></div> </div>')
 }
+
+
+var regionDropdown = $("#regionDropdown");
+var areaDropdown = $("#areaDropdown");
+$.get("/area/get-areas?region_id=" + $(regionDropdown).find(":selected").val(), function(response) {
+    $(response).each(function() {
+        $("<option />", {
+            val: this.id,
+            text: this.name
+        }).appendTo(areaDropdown);
+    });
+});
+$(regionDropdown).change(function() {
+    $(areaDropdown).empty();
+    $.get("/area/get-areas?region_id=" + $(regionDropdown).find(":selected").val(), function(response) {
+        $(response).each(function() {
+            $("<option />", {
+                val: this.id,
+                text: this.name
+            }).appendTo(areaDropdown);
+        });
+    });
+});
