@@ -70,7 +70,7 @@ AppAsset::register($this);
         </ul>
     </div>
     <div style="overflow: auto" class="p-0 flex-fill">
-        <div class="p-3">
+        <div class="p-3 container">
             <?= Breadcrumbs::widget([
                 'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
             ]) ?>

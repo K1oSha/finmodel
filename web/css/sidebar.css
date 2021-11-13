@@ -1,0 +1,35 @@
+body {
+    min-height: 100vh;
+    min-height: -webkit-fill-available;
+}
+
+html {
+    height: -webkit-fill-available;
+}
+
+main {
+    display: flex;
+    flex-wrap: nowrap;
+    height: 100vh;
+    height: -webkit-fill-available;
+    max-height: 100vh;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.dropdown-toggle { outline: 0; }
+
+.nav-flush .nav-link {
+    border-radius: 0;
+}
+
+
+.sidebar-scroll::-webkit-scrollbar {
+    width: 4px;               /* ширина scrollbar */
+}
+.sidebar-scroll::-webkit-scrollbar-track {
+    background: #ffffff;        /* цвет дорожки */
+}
+.sidebar-scroll::-webkit-scrollbar-thumb {
+    background-color: #c1c1c1;    /* цвет плашки */
+}
