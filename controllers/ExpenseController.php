@@ -2,16 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Sort;
-use app\models\search\Sort as SortSearch;
+use app\models\Expense;
+use app\models\search\Expense as ExpenseSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * SortController implements the CRUD actions for Sort model.
+ * ExpenseController implements the CRUD actions for Expense model.
  */
-class SortController extends Controller
+class ExpenseController extends Controller
 {
     /**
      * @inheritDoc
@@ -32,12 +32,12 @@ class SortController extends Controller
     }
 
     /**
-     * Lists all Sort models.
+     * Lists all Expense models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new SortSearch();
+        $searchModel = new ExpenseSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -47,9 +47,8 @@ class SortController extends Controller
     }
 
     /**
-     * Displays a single Sort model.
+     * Displays a single Expense model.
      * @param int $id ID
-     * @param int $сultura_id Сultura ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -61,17 +60,17 @@ class SortController extends Controller
     }
 
     /**
-     * Creates a new Sort model.
+     * Creates a new Expense model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Sort();
+        $model = new Expense();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'cultura_id' => $model->cultura_id]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -83,19 +82,18 @@ class SortController extends Controller
     }
 
     /**
-     * Updates an existing Sort model.
+     * Updates an existing Expense model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @param int $cultura_id cultura ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $cultura_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $cultura_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'cultura_id' => $model->сultura_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -104,31 +102,29 @@ class SortController extends Controller
     }
 
     /**
-     * Deletes an existing Sort model.
+     * Deletes an existing Expense model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @param int $cultura_id cultura ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $cultura_id)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $cultura_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Sort model based on its primary key value.
+     * Finds the Expense model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @param int $сultura_id Сultura ID
-     * @return Sort the loaded model
+     * @return Expense the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Sort::findOne(['id' => $id])) !== null) {
+        if (($model = Expense::findOne($id)) !== null) {
             return $model;
         }
 

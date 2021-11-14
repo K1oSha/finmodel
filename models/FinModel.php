@@ -53,11 +53,11 @@ class FinModel extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'sort_id' => 'Sort ID',
+            'sort_id' => 'Сорт культуры',
             'name' => 'Наименование',
             'descriprion' => 'Описание',
             'area' => 'Общая посевная площадь',
-            'area_house' => 'Area House',
+            'area_house' => 'Регион',
             'electro_price' => 'Стоимость электронергии кВт/ч',
             'water_price' => 'Стоимость воды м3',
             'price_culture' => 'Price Culture',

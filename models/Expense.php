@@ -10,35 +10,35 @@ use Yii;
  * @property int $id
  * @property string $name
  * @property int $texnika_id
- * @property string $expensecol
- * @property int $fin_model_idfin_model
- * @property float $1_exp
- * @property float $1_prib
+ * @property int $fin_model_id
+ * @property float $exp_1
+ * @property float $prib_1
  * @property float $price
- * @property float $2_exp
- * @property float $2_prib
- * @property float $3_exp
- * @property float $3_prib
- * @property float $4_exp
- * @property float $4_prib
- * @property float $5_prib
- * @property float $5_exp
- * @property float $6_prib
- * @property float $6_exp
- * @property float $7_exp
- * @property float $7_prib
- * @property float $8_exp
- * @property float $8_prib
- * @property float $9_exp
- * @property float $9_prib
- * @property float $10_exp
- * @property float $10_prib
- * @property float $11_exp
- * @property float $11_prib
- * @property float $12_prib
- * @property float $12_exp
+ * @property float $exp_2
+ * @property float $prib_2
+ * @property float $exp_3
+ * @property float $prib_3
+ * @property float $exp_4
+ * @property float $prib_4
+ * @property float $prib_5
+ * @property float $exp_5
+ * @property float $prib_6
+ * @property float $exp_6
+ * @property float $exp_7
+ * @property float $prib_7
+ * @property float $exp_8
+ * @property float $prib_8
+ * @property float $exp_9
+ * @property float $prib_9
+ * @property float $exp_10
+ * @property float $prib_10
+ * @property float $exp_11
+ * @property float $prib_11
+ * @property float $prib_12
+ * @property float $exp_12
+ * @property int $in_stock
  *
- * @property FinModel $finModelIdfinModel
+ * @property FinModel $finModel
  * @property Texnika $texnika
  */
 class Expense extends \yii\db\ActiveRecord
@@ -57,11 +57,11 @@ class Expense extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'texnika_id', 'expensecol', 'fin_model_idfin_model', 'price'], 'required'],
-            [['texnika_id', 'fin_model_idfin_model'], 'integer'],
-            [['1_exp', '1_prib', 'price', '2_exp', '2_prib', '3_exp', '3_prib', '4_exp', '4_prib', '5_prib', '5_exp', '6_prib', '6_exp', '7_exp', '7_prib', '8_exp', '8_prib', '9_exp', '9_prib', '10_exp', '10_prib', '11_exp', '11_prib', '12_prib', '12_exp'], 'number'],
-            [['name', 'expensecol'], 'string', 'max' => 45],
-            [['fin_model_idfin_model'], 'exist', 'skipOnError' => true, 'targetClass' => FinModel::className(), 'targetAttribute' => ['fin_model_idfin_model' => 'id']],
+            [['name', 'texnika_id', 'fin_model_id', 'price'], 'required'],
+            [['texnika_id', 'fin_model_id', 'in_stock'], 'integer'],
+            [['exp_1', 'prib_1', 'price', 'exp_2', 'prib_2', 'exp_3', 'prib_3', 'exp_4', 'prib_4', 'prib_5', 'exp_5', 'prib_6', 'exp_6', 'exp_7', 'prib_7', 'exp_8', 'prib_8', 'exp_9', 'prib_9', 'exp_10', 'prib_10', 'exp_11', 'prib_11', 'prib_12', 'exp_12'], 'number'],
+            [['name'], 'string', 'max' => 45],
+            [['fin_model_id'], 'exist', 'skipOnError' => true, 'targetClass' => FinModel::className(), 'targetAttribute' => ['fin_model_id' => 'id']],
             [['texnika_id'], 'exist', 'skipOnError' => true, 'targetClass' => Texnika::className(), 'targetAttribute' => ['texnika_id' => 'id']],
         ];
     }
@@ -75,44 +75,44 @@ class Expense extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'texnika_id' => 'Texnika ID',
-            'expensecol' => 'Expensecol',
-            'fin_model_idfin_model' => 'Fin Model Idfin Model',
-            '1_exp' => '1 Exp',
-            '1_prib' => '1 Prib',
+            'fin_model_id' => 'Fin Model ID',
+            'exp_1' => 'Exp 1',
+            'prib_1' => 'Prib 1',
             'price' => 'Price',
-            '2_exp' => '2 Exp',
-            '2_prib' => '2 Prib',
-            '3_exp' => '3 Exp',
-            '3_prib' => '3 Prib',
-            '4_exp' => '4 Exp',
-            '4_prib' => '4 Prib',
-            '5_prib' => '5 Prib',
-            '5_exp' => '5 Exp',
-            '6_prib' => '6 Prib',
-            '6_exp' => '6 Exp',
-            '7_exp' => '7 Exp',
-            '7_prib' => '7 Prib',
-            '8_exp' => '8 Exp',
-            '8_prib' => '8 Prib',
-            '9_exp' => '9 Exp',
-            '9_prib' => '9 Prib',
-            '10_exp' => '10 exp',
-            '10_prib' => '10 prib',
-            '11_exp' => '11 Exp',
-            '11_prib' => '11 Prib',
-            '12_prib' => '12 Prib',
-            '12_exp' => '12 Exp',
+            'exp_2' => 'Exp 2',
+            'prib_2' => 'Prib 2',
+            'exp_3' => 'Exp 3',
+            'prib_3' => 'Prib 3',
+            'exp_4' => 'Exp 4',
+            'prib_4' => 'Prib 4',
+            'prib_5' => 'Prib 5',
+            'exp_5' => 'Exp 5',
+            'prib_6' => 'Prib 6',
+            'exp_6' => 'Exp 6',
+            'exp_7' => 'Exp 7',
+            'prib_7' => 'Prib 7',
+            'exp_8' => 'Exp 8',
+            'prib_8' => 'Prib 8',
+            'exp_9' => 'Exp 9',
+            'prib_9' => 'Prib 9',
+            'exp_10' => 'Exp 10',
+            'prib_10' => 'Prib 10',
+            'exp_11' => 'Exp 11',
+            'prib_11' => 'Prib 11',
+            'prib_12' => 'Prib 12',
+            'exp_12' => 'Exp 12',
+            'in_stock' => 'In Stock',
         ];
     }
 
     /**
-     * Gets query for [[FinModelIdfinModel]].
+     * Gets query for [[FinModel]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getFinModelIdfinModel()
+    public function getFinModel()
     {
-        return $this->hasOne(FinModel::className(), ['id' => 'fin_model_idfin_model']);
+        return $this->hasOne(FinModel::className(), ['id' => 'fin_model_id']);
     }
 
     /**

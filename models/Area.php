@@ -47,10 +47,10 @@ class Area extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'name' => 'Name',
+            'name' => 'Наименование',
             'region_id' => 'Region ID',
-            'recomended_culture' => 'Recomended Culture',
-            'cultura_id' => 'Cultura ID',
+            'recomended_culture' => 'Описание преимущества культуры',
+            'cultura_id' => 'Преимушественная культура',
         ];
     }
 

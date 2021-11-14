@@ -103,3 +103,23 @@ div.has-success>input {
     background-position: right calc(.375em + .1875rem) center;
     background-size: calc(.75em + .375rem) calc(.75em + .375rem);
 }
+
+.fin-item {
+    margin-left: 0.5rem;
+    width: 4.5rem;
+    max-width: 4.5rem;
+    font-size: 14px;
+}
+
+.fin-label {
+    width: 15rem;
+}
+
+.mega-label {
+    margin-bottom: -100px;
+}
+
+.fin-hidden {
+    color: white;
+    z-index: -1;
+}

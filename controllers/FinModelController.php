@@ -62,6 +62,7 @@ class FinModelController extends Controller
      */
     public function actionView($id)
     {
+        
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
@@ -104,10 +105,13 @@ class FinModelController extends Controller
                     } else {
                         $dataProvider = new ArrayDataProvider([
                             'allModels' => Sort::find()->where(['cultura_id' => $area->cultura_id])->all()
+                        ]);
+                        $dataProvider2 = new ArrayDataProvider([
+                            'allModels' => Sort::find()->where(['cultura_id' => $model->cultura_id])->all()
                         ]); 
                         $result = 2;
                     } 
-                    return $this->render('start', ['model' => $model, 'result' => $result, 'dataProvider' => $dataProvider]);
+                    return $this->render('start', ['model' => $model, 'result' => $result, 'dataProvider' => $dataProvider, 'dataProvider2' => $dataProvider2]);
                 }
             }
         }
