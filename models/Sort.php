@@ -60,7 +60,7 @@ class Sort extends \yii\db\ActiveRecord
             'tovarnost' => 'Товарность (%)',
             'time_grow' => 'Длительность цикла (дней)',
             'lejcost' => 'Лежкость (%)',
-            'price' => 'Стоимость (руб)',
+            'price' => 'Стоимость (руб за тонну)',
             'area_number' => 'Регионы допуска',
         ];
     }
