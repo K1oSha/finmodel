@@ -13,7 +13,7 @@ use yii\widgets\DetailView;
 /* @var $model app\models\FinModel */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Fin Models', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '/Финансовые модели/', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>

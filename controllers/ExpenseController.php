@@ -76,6 +76,7 @@ class ExpenseController extends Controller
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->fin_model_id = $fin_model_id;
+                if($model->price != 0) $model->in_stock =1 ;
                 if ($model->save()) {
                     return $this->redirect(['/fin-model/view', 'id' => $model->fin_model_id]);
                 }
@@ -99,7 +100,9 @@ class ExpenseController extends Controller
     {
         $model = $this->findModel($id);
 
-        if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            if($model->price != 0) $model->in_stock =1 ;
+            $model->save();
             return $this->redirect(['/fin-model/view', 'id' => $model->fin_model_id]);
         }
 

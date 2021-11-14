@@ -90,7 +90,7 @@ class FinModelController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
-        \Yii::$app->session['check'] = $model;
+
         return $this->render('create', [
             'model' => $model,
             'sort_id' => $sort_id

@@ -57,10 +57,10 @@ class AreaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $region_id, $cultura_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $region_id, $cultura_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -81,7 +81,7 @@ class AreaController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id, 'region_id' => $model->region_id, 'cultura_id' => $model->cultura_id]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -101,9 +101,9 @@ class AreaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $region_id, $cultura_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $region_id, $cultura_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id, 'region_id' => $model->region_id, 'cultura_id' => $model->cultura_id]);
@@ -123,9 +123,9 @@ class AreaController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $region_id, $cultura_id)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $region_id, $cultura_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -139,9 +139,9 @@ class AreaController extends Controller
      * @return Area the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $region_id, $cultura_id)
+    protected function findModel($id)
     {
-        if (($model = Area::findOne(['id' => $id, 'region_id' => $region_id, 'cultura_id' => $cultura_id])) !== null) {
+        if (($model = Area::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

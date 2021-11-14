@@ -43,7 +43,10 @@ $this->params['breadcrumbs'][] = $this->title;
             //'price',
             //'area_number',
 
-            ['class' => 'yii\grid\ActionColumn'],
+            ['class' => 'yii\grid\ActionColumn',
+                'header'=>"Действия",
+
+            ],
         ],
     ]); ?>
 

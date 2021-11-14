@@ -14,15 +14,17 @@ use yii\widgets\Pjax;
 /* @var $model app\models\FinModel */
 
 $this->title = 'Создание финансовой модели';
-$this->params['breadcrumbs'][] = ['label' => 'Fin Models', 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => '/Финансовые модели/', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="fin-model-create">
+<div class="fin-model-create row">
 
     <h1><?= Html::encode($this->title) ?></h1>
-    <?php Pjax::begin(); ?>
+    <div class="col-7">
+        <?php Pjax::begin(); ?>
 
         <?php $form = ActiveForm::begin(); ?>
+
         <?= $form->field($model, 'region_id')->dropDownList(ArrayHelper::map(Region::find()->all(),'id','name'), ['id'=>'regionDropdown','prompt' => 'Выберите регион']) ?>
         <?= $form->field($model, 'area_id')->dropDownList([], ['id'=>'areaDropdown']) ?>
         <?= $form->field($model, 'cultura_id')->dropDownList(ArrayHelper::map(Cultura::find()->all(), 'id', 'name')) ?>
@@ -33,14 +35,16 @@ $this->params['breadcrumbs'][] = $this->title;
         <?php ActiveForm::end(); ?>
 
         <? if ($result == 1) {
-            echo "<h3 class=' mt-3 text-success'> Взращивание культуры рекомендуется </h3> ";
-            echo "<p>" . Area::findOne($model->area_id)->recomended_culture.  "</p>";
-            ?>
-            <h4 class="mt-4">Подходящие сорта культуры</h4>
-            <div style="line-height: 0.5">
-                    <p>Ниже представлены сорта, которые обеспечивают стабильное</p>
-                    <p>получение продукции хорошего качества в данном регионе.</p>
-            </div>
+        echo "<h3 class=' mt-3 text-success'> Взращивание культуры рекомендуется </h3> ";
+        echo "<p>" . Area::findOne($model->area_id)->recomended_culture.  "</p>";
+        ?>
+        <h4 class="mt-4">Подходящие сорта культуры</h4>
+        <div style="line-height: 0.5">
+            <p>Ниже представлены сорта, которые обеспечивают стабильное</p>
+            <p>получение продукции хорошего качества в данном регионе.</p>
+        </div>
+    </div>
+
 
         
         <?= GridView::widget([
