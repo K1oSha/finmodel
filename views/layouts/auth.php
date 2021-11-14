@@ -33,7 +33,7 @@ AuthAsset::register($this);
         <div class="container-fluid d-flex justify-content-center align-items-center flex-column header-padding-top">
                 <div class="row heading text-center col-lg-7 col-xxl-3">
                     <div class="col">
-                        <p class="service-title" >Бизнес планер</p>
+                        <p class="service-title" >Цифровое хозяйство</p>
                         <p class="service-subtitle"><?= Yii::t('app','Управляйте бизнесом умело')?></p>
                     </div>
                     <div class="label-padding" style="text-align: center ">
