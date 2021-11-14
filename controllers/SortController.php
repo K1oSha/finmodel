@@ -53,10 +53,10 @@ class SortController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id, $cultura_id)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id, $cultura_id),
+            'model' => $this->findModel($id),
         ]);
     }
 
@@ -126,9 +126,9 @@ class SortController extends Controller
      * @return Sort the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id, $cultura_id)
+    protected function findModel($id)
     {
-        if (($model = Sort::findOne(['id' => $id, 'cultura_id' => $cultura_id])) !== null) {
+        if (($model = Sort::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

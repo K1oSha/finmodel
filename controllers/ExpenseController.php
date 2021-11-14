@@ -2,21 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Area;
-use app\models\Cultura;
-use app\models\FinModel;
-use app\models\forms\FinModelForm;
-use app\models\search\FinModel as FinModelSearch;
-use app\models\Sort;
-use yii\data\ArrayDataProvider;
+use app\models\Expense;
+use app\models\search\Expense as ExpenseSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * FinModelController implements the CRUD actions for FinModel model.
+ * ExpenseController implements the CRUD actions for Expense model.
  */
-class FinModelController extends Controller
+class ExpenseController extends Controller
 {
     /**
      * @inheritDoc
@@ -37,12 +32,12 @@ class FinModelController extends Controller
     }
 
     /**
-     * Lists all FinModel models.
+     * Lists all Expense models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new FinModelSearch();
+        $searchModel = new ExpenseSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -52,79 +47,44 @@ class FinModelController extends Controller
     }
 
     /**
-     * Displays a single FinModel model.
+     * Displays a single Expense model.
      * @param int $id ID
-     * @param int $sort_id Sort ID
-     * @param int $area_id Area ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
     public function actionView($id)
     {
-        
         return $this->render('view', [
             'model' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new FinModel model.
+     * Creates a new Expense model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate($sort_id)
+    public function actionCreate()
     {
-        $model = new FinModel();
-        $model->sort_id = $sort_id;
+        $model = new Expense();
+
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 return $this->redirect(['view', 'id' => $model->id]);
             }
+        } else {
+            $model->loadDefaultValues();
         }
+
         return $this->render('create', [
-            'model' => $model,
-            'sort_id' => $sort_id
-        ]);
-    }
-
-    public function actionStart()
-    {
-        $model = new FinModelForm();
-
-        if ($this->request->isPost) {
-            if ($model->load($this->request->post())) {
-                if ($model->validate())
-                {
-                    $area = Area::findOne($model->area_id);
-                    if ($model->cultura_id == $area->cultura_id) {
-                        $dataProvider = new ArrayDataProvider([
-                            'allModels' => Sort::find()->where(['cultura_id' => $model->cultura_id])->all()
-                        ]);
-                        $result = 1;
-                    } else {
-                        $dataProvider = new ArrayDataProvider([
-                            'allModels' => Sort::find()->where(['cultura_id' => $area->cultura_id])->all()
-                        ]);
-                        $dataProvider2 = new ArrayDataProvider([
-                            'allModels' => Sort::find()->where(['cultura_id' => $model->cultura_id])->all()
-                        ]); 
-                        $result = 2;
-                    } 
-                    return $this->render('start', ['model' => $model, 'result' => $result, 'dataProvider' => $dataProvider, 'dataProvider2' => $dataProvider2]);
-                }
-            }
-        }
-        return $this->render('start', [
             'model' => $model,
         ]);
     }
 
     /**
-     * Updates an existing FinModel model.
+     * Updates an existing Expense model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
-     * @param int $sort_id Sort ID
-     * @param int $area_id Area ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -142,11 +102,9 @@ class FinModelController extends Controller
     }
 
     /**
-     * Deletes an existing FinModel model.
+     * Deletes an existing Expense model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @param int $sort_id Sort ID
-     * @param int $area_id Area ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
@@ -158,17 +116,15 @@ class FinModelController extends Controller
     }
 
     /**
-     * Finds the FinModel model based on its primary key value.
+     * Finds the Expense model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @param int $sort_id Sort ID
-     * @param int $area_id Area ID
-     * @return FinModel the loaded model
+     * @return Expense the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = FinModel::findOne(['id' => $id])) !== null) {
+        if (($model = Expense::findOne($id)) !== null) {
             return $model;
         }
 

@@ -58,7 +58,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'create' => function ($url,$model) {
                         return Html::a(
-                        '<button class="btn btn-outline-info">Выбрать данный сорт</button>', 
+                        '<button class="btn btn-outline-primary">Выбрать данный сорт</button>', 
                         [Url::to('/fin-model/create'), 'sort_id'=>$model->id]);
                     },
                 ],
@@ -76,7 +76,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <p>получение продукции хорошего качества в данном регионе.</p>
             </div>
 
-        <h3>Пшеница</h3>
+        <h3><?=Cultura::findOne(Area::findOne($model->area_id)->cultura_id)->name; ?></h3>
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'columns' => [
@@ -92,13 +92,41 @@ $this->params['breadcrumbs'][] = $this->title;
                 'buttons' => [
                     'create' => function ($url,$model) {
                         return Html::a(
-                        '<button class="btn btn-outline-info">Выбрать данный сорт</button>', 
+                        '<button class="btn btn-outline-primary">Выбрать данный сорт</button>', 
                         [Url::to('/fin-model/create'), 'sort_id'=>$model->id]);
                     },
                 ],
                 ],
             ],
         ]); ?>
+            <?if (isset($dataProvider2)) {
+            ?> 
+
+            <h4 class="mt-4">Сорта выбранной вами культуры</h4>
+            <?= GridView::widget([
+                    'dataProvider' => $dataProvider2,
+                    'columns' => [
+                        'name',
+                        'plus',
+                        'minus',
+                        'profit',
+                        'tovarnost',
+                        'lejcost',
+                        'time_grow',
+                        ['class' => 'yii\grid\ActionColumn', 
+                        'template' => '{create}',
+                        'buttons' => [
+                            'create' => function ($url,$model) {
+                                return Html::a(
+                                '<button class="btn btn-outline-primary">Выбрать данный сорт</button>', 
+                                [Url::to('/fin-model/create'), 'sort_id'=>$model->id]);
+                            },
+                        ],
+                        ],
+                    ],
+                ]); ?>
+            <?
+            } ?>
            <? }?>
             
     
