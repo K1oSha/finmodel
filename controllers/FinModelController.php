@@ -4,6 +4,7 @@ namespace app\controllers;
 
 use app\models\Area;
 use app\models\Cultura;
+use app\models\Expense;
 use app\models\FinModel;
 use app\models\forms\FinModelForm;
 use app\models\search\FinModel as FinModelSearch;
@@ -124,12 +125,12 @@ class FinModelController extends Controller
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id, $sort_id, $area_id)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($id, $sort_id, $area_id);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id, 'sort_id' => $model->sort_id, 'area_id' => $model->area_id]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -141,24 +142,37 @@ class FinModelController extends Controller
      * Deletes an existing FinModel model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
-     * @param int $sort_id Sort ID
-     * @param int $area_id Area ID
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id, $sort_id, $area_id)
+    public function actionDelete($id)
     {
-        $this->findModel($id, $sort_id, $area_id)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionCapital($id)
+    {
+
+
+        $arrayCapital = Expense::find()->where(['in_stock' => 1, 'fin_model_id' => $id])->all();
+
+        $itogo = 0;
+
+        foreach ($arrayCapital as $one)
+            $itogo+=$one->price;
+
+        return $this->render('capital', [
+            'itogo' => $itogo,
+            'arrayCapital' => $arrayCapital
+        ]);
     }
 
     /**
      * Finds the FinModel model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @param int $sort_id Sort ID
-     * @param int $area_id Area ID
      * @return FinModel the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
