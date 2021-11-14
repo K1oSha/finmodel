@@ -8,19 +8,19 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_ENGINE_SUBSTITUTION';
 
 -- -----------------------------------------------------
--- Schema u1519669_default
+-- Schema finmodel
 -- -----------------------------------------------------
 
 -- -----------------------------------------------------
--- Schema u1519669_default
+-- Schema finmodel
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `u1519669_default` DEFAULT CHARACTER SET utf8 ;
-USE `u1519669_default` ;
+CREATE SCHEMA IF NOT EXISTS `finmodel` DEFAULT CHARACTER SET utf8 ;
+USE `finmodel` ;
 
 -- -----------------------------------------------------
--- Table `u1519669_default`.`texnika`
+-- Table `finmodel`.`texnika`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u1519669_default`.`texnika` (
+CREATE TABLE IF NOT EXISTS `finmodel`.`texnika` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` INT NOT NULL,
   `toplivo` FLOAT NOT NULL,
@@ -31,17 +31,17 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u1519669_default`.`cultura`
+-- Table `finmodel`.`cultura`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u1519669_default`.`cultura` (
+CREATE TABLE IF NOT EXISTS `finmodel`.`cultura` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`))
 ENGINE = InnoDB;
 -- -----------------------------------------------------
--- Table `u1519669_default`.`sort`
+-- Table `finmodel`.`sort`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u1519669_default`.`sort` (
+CREATE TABLE IF NOT EXISTS `finmodel`.`sort` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `cultura_id` INT NOT NULL,
@@ -57,16 +57,16 @@ CREATE TABLE IF NOT EXISTS `u1519669_default`.`sort` (
   INDEX `fk_Sort_Cultura_idx` (`cultura_id` ASC) VISIBLE,
   CONSTRAINT `fk_Sort_Cultura`
     FOREIGN KEY (`cultura_id`)
-    REFERENCES `u1519669_default`.`cultura` (`id`)
+    REFERENCES `finmodel`.`cultura` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u1519669_default`.`region`
+-- Table `finmodel`.`region`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u1519669_default`.`region` (
+CREATE TABLE IF NOT EXISTS `finmodel`.`region` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `number` VARCHAR(45) NOT NULL,
@@ -75,9 +75,9 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u1519669_default`.`area`
+-- Table `finmodel`.`area`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u1519669_default`.`area` (
+CREATE TABLE IF NOT EXISTS `finmodel`.`area` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NULL,
   `region_id` INT NOT NULL,
@@ -88,21 +88,21 @@ CREATE TABLE IF NOT EXISTS `u1519669_default`.`area` (
   INDEX `fk_area_cultura1_idx` (`cultura_id` ASC) VISIBLE,
   CONSTRAINT `fk_area_region1`
     FOREIGN KEY (`region_id`)
-    REFERENCES `u1519669_default`.`region` (`id`)
+    REFERENCES `finmodel`.`region` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_area_cultura1`
     FOREIGN KEY (`cultura_id`)
-    REFERENCES `u1519669_default`.`cultura` (`id`)
+    REFERENCES `finmodel`.`cultura` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u1519669_default`.`fin_model`
+-- Table `finmodel`.`fin_model`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u1519669_default`.`fin_model` (
+CREATE TABLE IF NOT EXISTS `finmodel`.`fin_model` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `sort_id` INT NOT NULL,
   `name` VARCHAR(45) NOT NULL,
@@ -141,16 +141,16 @@ CREATE TABLE IF NOT EXISTS `u1519669_default`.`fin_model` (
   INDEX `fk_fin_model_Sort1_idx` (`sort_id` ASC) VISIBLE,
   CONSTRAINT `fk_fin_model_Sort1`
     FOREIGN KEY (`sort_id`)
-    REFERENCES `u1519669_default`.`sort` (`id`)
+    REFERENCES `finmodel`.`sort` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u1519669_default`.`expense`
+-- Table `finmodel`.`expense`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u1519669_default`.`expense` (
+CREATE TABLE IF NOT EXISTS `finmodel`.`expense` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `texnika_id` INT NULL,
@@ -186,21 +186,21 @@ CREATE TABLE IF NOT EXISTS `u1519669_default`.`expense` (
   INDEX `fk_expense_fin_model1_idx` (`fin_model_id` ASC) VISIBLE,
   CONSTRAINT `fk_expense_texnika1`
     FOREIGN KEY (`texnika_id`)
-    REFERENCES `u1519669_default`.`texnika` (`id`)
+    REFERENCES `finmodel`.`texnika` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_expense_fin_model1`
     FOREIGN KEY (`fin_model_id`)
-    REFERENCES `u1519669_default`.`fin_model` (`id`)
+    REFERENCES `finmodel`.`fin_model` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `u1519669_default`.`migration`
+-- Table `finmodel`.`migration`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `u1519669_default`.`migration` (
+CREATE TABLE IF NOT EXISTS `finmodel`.`migration` (
   `version` VARCHAR(180) NOT NULL,
   `apply_time` INT NULL,
   PRIMARY KEY (`version`))

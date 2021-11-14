@@ -30,7 +30,7 @@ admin@mail.ru qwas - Интерфейс оператора сайта
   
  </ul>
 <h4>Демо</h4>
-<p>Демо сервиса доступно по адресу: http://demo.test </p>
+<p>Демо сервиса доступно по адресу: https://akpkteam.ru </p>
 <p>Реквизиты тестового пользователя: email: <b>testuser@test.ru</b>, пароль: <b>testuser</b></p>
 
 
