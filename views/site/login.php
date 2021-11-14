@@ -39,3 +39,8 @@ $this->title = Yii::t('app','Войти в личный кабинет');
     </div>
 
 </div>
+<h4>Логины и пароли для теста</h4>
+farmer@mail.ru qwas - Интерфейс фермера
+<br>
+admin@mail.ru qwas - Интерфейс оператора сайта
+<br>
