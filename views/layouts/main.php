@@ -7,7 +7,6 @@ use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap5\Html;
 use yii\widgets\Breadcrumbs;
-
 AppAsset::register($this);
 ?>
 <?php $this->beginPage() ?>

@@ -1,6 +1,10 @@
 <?php
 
+use app\models\Cultura;
+use app\models\Expense;
 use app\models\Sort;
+use yii\data\ArrayDataProvider;
+use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\widgets\DetailView;
@@ -27,6 +31,102 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
         ]) ?>
     </p>
+    <?
+    $arrayCapital = Expense::find()->where(['in_stock' => 1, 'fin_model_id' => $model->id])->all();
+    $dataProvider = new ArrayDataProvider(['allModels' => $arrayCapital]);
+    $itogo = 0;
+
+    foreach ($arrayCapital as $one)
+        $itogo+=$one->price;
+
+    $sort = Sort::findOne($model->sort_id);
+    $cultura = Cultura::findOne($sort->cultura_id);
+    $nameCulturi = $cultura->name.' «'.$sort->name.'»';
+    $averangePrice = 66;
+    $priceFromRossStat = 35;
+    ?>
+    <!-- Кнопка-триггер модального окна -->
+    <button type="button" class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        Расчёт капитальных вложений
+    </button>
+
+    <button type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#exampleModalEconomy">
+        Расчёт экономической эффективности
+    </button>
+
+    <!-- Модальное окно -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Капитальные вложения</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="fin-model-create row">
+
+                        <div>
+                            <?= GridView::widget([
+                                'dataProvider' => $dataProvider,
+                                'columns' => [
+                                    [
+                                        'attribute' => 'name',
+                                        'label' => 'Название'
+                                    ],
+                                    [
+                                        'attribute' => 'price',
+                                        'label' => 'Стоимость р.'
+                                    ],
+                                ],
+                            ]); ?>
+                            <h2 style="text-align: right">Итого: <b><?= $itogo?></b></h2>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>>
+    </div>
+
+    <!-- Модальное окно -->
+    <div class="modal fade" id="exampleModalEconomy" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="exampleModalLabel">Оценка экономической эффективности культуры <?=$nameCulturi?></h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Будет ли ваш продукт дешевле или дороже чем средний продкут на полке</p>
+                    <br>
+                    <div class="col-12">
+
+                        <? if($averangePrice <= $priceFromRossStat * 1.2):?>
+
+                            <h4 style="font-weight: 300" >Себестоимость производимого вами сорта за 1кг: <b style="color: green"><?= $averangePrice?></b></h4>
+                            <h4 style="font-weight: 300" > Стоимость сорта продукции, сложившаяся в данном регоине: <b><?= $priceFromRossStat?></b></h4>
+                            <br>
+                            <h4 style="font-weight: 400">Вывод: товар обладает высокой конкурентноспособностью на рынке</h4>
+
+                        <?  else: ?>
+                            <?if($averangePrice <= $priceFromRossStat * 1.4):?>
+                                <h4 style="font-weight: 300" >Себестоимость производимого вами сорта за 1кг: <b style="color:orange"><?= $averangePrice?></b></h4>
+                                <h4 style="font-weight: 300" > Стоимость сорта продукции, сложившаяся в данном регоине: <b><?= $priceFromRossStat?></b></h4>
+                                <br>
+                                <h4 style="font-weight: 400">Вывод: товар обладает средней конкурентноспособностью на рынке</h4>
+                            <?else:?>
+                                <h4 style="font-weight: 300" >Себестоимость производимого вами сорта за 1кг: <b style="color: red"><?= $averangePrice?></b></h4>
+
+                                <h4 style="font-weight: 300" > Стоимость сорта продукции, сложившаяся в данном регоине: <b><?= $priceFromRossStat?></b></h4>
+                                <br>
+                                <h4 style="font-weight: 400">Вывод: товар обладает низкой конкурентноспособностью на рынке</h4>
+                            <?endif;?>
+                        <?endif;?>
+                    </div>
+                </div>
+            </div>
+        </div>>
+    </div>
 
     <br/>
     <br/>
