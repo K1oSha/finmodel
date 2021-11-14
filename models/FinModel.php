@@ -81,7 +81,7 @@ class FinModel extends \yii\db\ActiveRecord
             'name' => 'Наименование фин. модели',
             'descriprion' => 'Описание фин. модели',
             'area' => 'Общая посевная площадь (га)',
-            'area_house' => 'Area House',
+            'area_house' => 'Регион',
             'electro_price' => 'Стоимость электоэнергии кВт/ч (руб.)',
             'water_price' => 'Стоимость воды м3 (руб.)',
             'price_culture' => 'Price Culture',

@@ -36,7 +36,7 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                 'attribute' => 'area_house',
-                'value' => Region::findOne((Sort::findOne($model->sort_id)->area_number))->name
+                'value' => function ($model) {return Region::findOne((int)(Sort::findOne($model->sort_id)->area_number))->name; }
             ],
 
 
