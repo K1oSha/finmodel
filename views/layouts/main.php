@@ -33,33 +33,27 @@ AppAsset::register($this);
         <a href="/" class="text-center p-3">
             <img width="30" height="30" class="img-fluid" src="/images/logo.png">
         </a>
+        <? $user = \app\models\User::findOne(Yii::$app->user->getId())?>
+        <? if($user->role == 'farmer'):?>
         <ul style="overflow-x: hidden; overflow-y: auto" class="sidebar-scroll nav nav-pills nav-flush mb-auto text-center">
             <li class="nav-item flex-fill">
-                <?= Html::a('<i class="fas fa-2x fa-briefcase"></i>', ['/fin-model'], [
-                        'class' => 'nav-link active py-3 border-bottom',
+                <?= Html::a('<i class="fas fa-2x  fa-home"></i>', ['site/index'], [
+                    'class' => 'nav-link text-secondary py-3 border-bottom',
+                    'title' => 'Главная',
+                    'data-bs-toggle' => 'tooltip',
+                    'data-bs-placement' => 'right',
+                ]) ?>
+            </li>
+            <li class="nav-item flex-fill">
+                <?= Html::a('<i class="fas fa-2x  fa-clipboard-list"></i>', ['/fin-model'], [
+                        'class' => 'nav-link text-secondary py-3 border-bottom',
                         'title' => 'Финансовые модели',
                         'data-bs-toggle' => 'tooltip',
                         'data-bs-placement' => 'right',
                 ]) ?>
             </li>
             <li class="nav-item flex-fill">
-                <?= Html::a('<i class="fas fa-2x fa-clipboard-list"></i>', [], [
-                    'class' => 'nav-link text-secondary py-3 border-bottom',
-                    'title' => Yii::t('app', 'Мои счета'),
-                    'data-bs-toggle' => 'tooltip',
-                    'data-bs-placement' => 'right',
-                ]) ?>
-            </li>
-            <li class="nav-item flex-fill">
-                <?= Html::a('<i class="fas fa-2x fa-users-cog"></i>', [], [
-                    'class' => 'nav-link text-secondary py-3 border-bottom',
-                    'title' => Yii::t('app', 'Мой профиль'),
-                    'data-bs-toggle' => 'tooltip',
-                    'data-bs-placement' => 'right',
-                ]) ?>
-            </li>
-            <li class="nav-item flex-fill">
-                <?= Html::a('<i class="fas fa-2x fa-sign-out-alt"></i>', ['logout'], [
+                <?= Html::a('<i class="fas fa-2x fa-sign-out-alt"></i>', ['/site/logout'], [
                     'class' => 'nav-link text-secondary py-3 border-bottom',
                     'title' => Yii::t('app', 'Выйти'),
                     'data-bs-toggle' => 'tooltip',
@@ -67,6 +61,58 @@ AppAsset::register($this);
                 ]) ?>
             </li>
         </ul>
+        <?else:?>
+            <ul style="overflow-x: hidden; overflow-y: auto" class="sidebar-scroll nav nav-pills nav-flush mb-auto text-center">
+                <li class="nav-item flex-fill">
+                    <?= Html::a('<i class="fas fa-2x  fa-home"></i>', ['site/index'], [
+                        'class' => 'nav-link text-secondary py-3 border-bottom',
+                        'title' => 'Главная',
+                        'data-bs-toggle' => 'tooltip',
+                        'data-bs-placement' => 'right',
+                    ]) ?>
+                </li>
+                <li class="nav-item flex-fill">
+                    <?= Html::a('<i class="fas fa-2x fa-search-location"></i>', ['/region'], [
+                        'class' => 'nav-link text-secondary py-3 border-bottom',
+                        'title' => 'Регионы',
+                        'data-bs-toggle' => 'tooltip',
+                        'data-bs-placement' => 'right',
+                    ]) ?>
+                </li>
+                <li class="nav-item flex-fill">
+                    <?= Html::a('<i class="fas fa-2x fa-list-alt"></i>', ['/area'], [
+                        'class' => 'nav-link text-secondary py-3 border-bottom',
+                        'title' => 'Районы',
+                        'data-bs-toggle' => 'tooltip',
+                        'data-bs-placement' => 'right',
+                    ]) ?>
+                </li>
+                <li class="nav-item flex-fill">
+                    <?= Html::a('<i class="fas fa-2x fa-seedling"></i>', ['/cultura'], [
+                        'class' => 'nav-link text-secondary py-3 border-bottom',
+                        'title' => 'Культуры',
+                        'data-bs-toggle' => 'tooltip',
+                        'data-bs-placement' => 'right',
+                    ]) ?>
+                </li>
+                <li class="nav-item flex-fill">
+                    <?= Html::a('<i class="fas fa-2x fa-leaf"></i>', ['/sort'], [
+                        'class' => 'nav-link text-secondary py-3 border-bottom',
+                        'title' => 'Сорта',
+                        'data-bs-toggle' => 'tooltip',
+                        'data-bs-placement' => 'right',
+                    ]) ?>
+                </li>
+                <li class="nav-item flex-fill">
+                    <?= Html::a('<i class="fas fa-2x fa-sign-out-alt"></i>', ['/site/logout'], [
+                        'class' => 'nav-link text-secondary py-3 border-bottom',
+                        'title' => Yii::t('app', 'Выйти'),
+                        'data-bs-toggle' => 'tooltip',
+                        'data-bs-placement' => 'right',
+                    ]) ?>
+                </li>
+            </ul>
+        <?endif;?>
     </div>
     <div style="overflow: auto" class="p-0 flex-fill">
         <div class="p-3 container">

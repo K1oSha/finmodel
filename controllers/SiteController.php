@@ -18,10 +18,10 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'only' => ['logout', 'login', 'register'],
+                'only' => ['logout', 'login', 'register', 'index'],
                 'rules' => [
                     [
-                        'actions' => ['logout'],
+                        'actions' => ['logout','index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -84,6 +84,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $user = new User();
             $user->setAttributes($model->attributes);
+            $user->role = 'farmer';
             $user->password = hash('sha256', $user->password);
             if ($user->save()) {
 

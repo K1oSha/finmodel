@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <?= Html::submitButton(Yii::t('app','Зарегистрироваться'), ['class' => 'btn btn-outline-primary btn-lg', 'name' => 'register-button']) ?>
                 </div>
                 <div class="mt-3 text-center">
-                    <p class="text-muted fs-5 m-0"><?=Yii::t('app', 'Если у вас уже есть личный кабинет, тогда можете')?></p><a href="#" class="fs-5 text-primary"><?=Yii::t('app', 'Войти')?></a>
+                    <p class="text-muted fs-5 m-0"><?=Yii::t('app', 'Если у вас уже есть личный кабинет, тогда можете')?></p><a href="login" class="fs-5 text-primary"><?=Yii::t('app', 'Войти')?></a>
                 </div>
             </div>
         
