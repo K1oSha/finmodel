@@ -72,13 +72,12 @@ class ExpenseController extends Controller
     public function actionCreate($fin_model_id)
     {
         $model = new Expense();
-
+        $model->loadDefaultValues();
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
                 $model->fin_model_id = $fin_model_id;
                 if ($model->save()) {
                     return $this->redirect(['/fin-model/view', 'id' => $model->fin_model_id]);
-
                 }
 
             }

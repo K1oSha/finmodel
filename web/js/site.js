@@ -42,3 +42,39 @@ $(regionDropdown).change(function() {
         });
     });
 });
+
+var data1 = [];
+var data2 = [];
+$('p[id^="exp_"]').each(function() {
+    data1.push($(this).text())
+});
+$('p[id^="prib_"]').each(function() {
+    data2.push($(this).text())
+});
+const ctx = document.getElementById('planChart').getContext('2d');
+const myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: ['Месяц 1', 'Месяц 2', 'Месяц 3', 'Месяц 4', 'Месяц 5', 'Месяц 6', 'Месяц 7', 'Месяц 8', 'Месяц 9', 'Месяц 10', 'Месяц 11', 'Месяц 12'],
+        datasets: [{
+                label: 'Прибыль по плану',
+                data: data1,
+                borderWidth: 2,
+                borderColor: "#0000FF",
+            },
+            {
+                label: 'Прибыль по факту',
+                data: data2,
+                borderWidth: 2,
+                borderColor: "#00FF00",
+            }
+        ]
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true
+            }
+        }
+    }
+});

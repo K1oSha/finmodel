@@ -10,6 +10,9 @@ use app\models\forms\FinModelForm;
 use app\models\forms\FinUpdateForm;
 use app\models\search\FinModel as FinModelSearch;
 use app\models\Sort;
+use kartik\mpdf\Pdf;
+use Mpdf\Mpdf;
+use Yii;
 use yii\data\ArrayDataProvider;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -87,10 +90,26 @@ class FinModelController extends Controller
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         }
+        \Yii::$app->session['check'] = $model;
         return $this->render('create', [
             'model' => $model,
             'sort_id' => $sort_id
         ]);
+    }
+
+    public function actionGetPdf($id) {
+        $model = FinModel::findOne($id);
+        $expenses = Expense::find()->where(['fin_model_id' => $id])->all();
+        $mpdf= new Mpdf();
+        $mpdf->autoScriptToLang = true;
+        $mpdf->autoLangToFont = true;
+        ob_start();
+        require '../views/fin-model/pdf.php';
+        $html = ob_get_clean();
+        $mpdf->WriteHTML($html);
+        $mpdf->Output();
+        exit();
+        return $pdf->render();
     }
 
     public function actionUpdateIncome($id) 

@@ -48,8 +48,8 @@ class Texnika extends \yii\db\ActiveRecord
             'id' => 'ID',
             'name' => 'Название',
             'toplivo' => 'Расход ГСМ на 100 км',
-            'norma' => 'Норма выроботки',
-            'price' => 'Стоимость',
+            'norma' => 'Норма выроботки (',
+            'price' => 'Стоимость (руб)',
         ];
     }
 
