@@ -1,6 +1,8 @@
 <?php
 
+use app\models\Sort;
 use yii\helpers\Html;
+use yii\helpers\Url;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
@@ -100,113 +102,29 @@ $this->params['breadcrumbs'][] = $this->title;
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
+                <? for ($i = 1; $i <=12; $i++) { $exp_var_name = 'exp_' . $i; $prib_var_name = 'prib_' . $i; ?>
                 <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
+                    <strong><p class="mt-2"><?= $model->{$exp_var_name} ?></p></strong>
+                    <strong><p><?= $model->{$prib_var_name} ?></p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? } ?>
             </div>
         </div>
     </div>
     <div class="row h-10 border border-1 rounded mt-3">
         <div class="d-flex justify-content-start">
-            <p class="fin-label h4 m-4">Картофель "Алена"</p>
+            <p class="fin-label h4 m-4"><?= Sort::findOne($model->sort_id)->name;?>  <a href="<?= Url::to(['/fin-model/update-income', 'id'=>$model->id])?>"><i class="fas fa-pen"></i></a></p>
             <div class="d-flex align-items-center flex-row">
                 <div class="d-flex align-items-center flex-column fin-item" >
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
+                <? for ($i = 1; $i <=12; $i++) { $exp_var_name = 'exp_' . $i; $prib_var_name = 'prib_' . $i; ?>
                 <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
+                    <strong><p class="mt-2"><?= $model->{$exp_var_name} ?></p></strong>
+                    <strong><p><?= $model->{$prib_var_name} ?></p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? } ?>
             </div>
         </div>
     </div>
@@ -274,182 +192,52 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="row h-10 border border-1 rounded mt-3">
         <div class="d-flex justify-content-start">
             <p class="fin-label h4 m-4 text-muted">ИТОГО РАСХОД</p>
+            <? 
+                $total = ['exp' => [],'prib'=>[]];
+                foreach ($expenses as $expense) {
+                     for ($i = 1; $i <=12; $i++) {
+                        $exp_var_name = 'exp_' . $i;
+                        $prib_var_name = 'prib_' . $i;
+                        $total['exp'][$i] += $expense->{$exp_var_name};
+                        $total['prib'][$i] += $expense->{$prib_var_name};
+                     }
+                }
+            ?> 
             <div class="d-flex align-items-center flex-row">
                 <div class="d-flex align-items-center flex-column fin-item" >
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
+                <? for ($i = 1; $i <=12; $i++) {?>
                 <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
+                    <strong><p class="mt-2"><?= $total['exp'][$i] ?></p></strong>
+                    <strong><p><?= $total['prib'][$i] ?></p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? } ?>
             </div>
         </div>
     </div>
+    <? foreach ($expenses as $expense) {?>
     <div class="row h-10 border border-1 rounded mt-3">
         <div class="d-flex justify-content-start">
-            <p class="fin-label h4 m-4">Аренда земли</p>
+            <p class="fin-label h4 m-4"><?= $expense->name?>  <a href="<?= Url::to(['/expense/update', 'id'=>$expense->id])?>"><i class="fas fa-pen"></i></a></p> 
             <div class="d-flex align-items-center flex-row">
                 <div class="d-flex align-items-center flex-column fin-item" >
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
+                <? for ($i = 1; $i <=12; $i++) { $exp_var_name = 'exp_' . $i; $prib_var_name = 'prib_' . $i; ?>
                 <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
+                    <strong><p class="mt-2"><?= $expense->{$exp_var_name} ?></p></strong>
+                    <strong><p><?= $expense->{$prib_var_name} ?></p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? } ?>
             </div>
         </div>
     </div>
-    <div class="row h-10 border border-1 rounded mt-3">
-        <div class="d-flex justify-content-start">
-            <p class="fin-label h4 m-4">Заработная плата</p>
-            <div class="d-flex align-items-center flex-row">
-                <div class="d-flex align-items-center flex-column fin-item" >
-                    <strong><p class="mt-2">План</p></strong>
-                    <strong><p>Факт</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-            </div>
-        </div>
-    </div>
+    <? } ?>
     <strong>
-        <a class="text-success" href="#"> + Добавить новую статью расходов</a>
+        <a class=" h4 text-success" href="<?= Url::to(['/expense/create', 'fin_model_id' => $model->id]) ?>"> + Добавить новую статью расходов</a>
     </strong>
 
     <div class="row h-10 mt-3">
@@ -521,54 +309,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? for ($i = 1; $i <=12; $i++) { $exp_var_name = 'exp_' . $i; $prib_var_name = 'prib_' . $i; ?>
+                    <div class="d-flex align-items-center flex-column fin-item">
+                        <strong><p class="mt-2"><?= $model->{$exp_var_name} * 0.06 ?></p></strong>
+                        <strong><p><?= $model->{$prib_var_name} * 0.06 ?></p></strong>
+                    </div>
+                <? } ?>
             </div>
         </div>
     </div>
@@ -580,54 +326,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? for ($i = 1; $i <=12; $i++) { $exp_var_name = 'exp_' . $i; $prib_var_name = 'prib_' . $i; ?>
+                    <div class="d-flex align-items-center flex-column fin-item">
+                        <strong><p class="mt-2"><?= $model->{$exp_var_name} * 0.06 ?></p></strong>
+                        <strong><p><?= $model->{$prib_var_name} * 0.06 ?></p></strong>
+                    </div>
+                <? } ?>
             </div>
         </div>
     </div>
@@ -690,7 +394,6 @@ $this->params['breadcrumbs'][] = $this->title;
                     <strong><p class="month">Месяц 12</p></strong>
                 </div>
             </div>
-            
         </div>
     </div>
     <div class="row h-10 border border-1 rounded mt-3">
@@ -701,54 +404,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? for ($i = 1; $i <=12; $i++) { $exp_var_name = 'exp_' . $i; $prib_var_name = 'prib_' . $i; ?>
+                    <div class="d-flex align-items-center flex-column fin-item">
+                        <strong><p class="mt-2"><?= $model->{$exp_var_name}?></p></strong>
+                        <strong><p><?= $model->{$prib_var_name} ?></p></strong>
+                    </div>
+                <? } ?>
             </div>
         </div>
     </div>
@@ -760,54 +421,12 @@ $this->params['breadcrumbs'][] = $this->title;
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
+                <? for ($i = 1; $i <=12; $i++) {?>
                 <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
+                    <strong><p class="mt-2"><?= $total['exp'][$i] ?></p></strong>
+                    <strong><p><?= $total['prib'][$i] ?></p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? } ?>
             </div>
         </div>
     </div>
@@ -819,60 +438,26 @@ $this->params['breadcrumbs'][] = $this->title;
                     <strong><p class="mt-2">План</p></strong>
                     <strong><p>Факт</p></strong>
                 </div>
+                <? 
+                $total_exp = 0;
+                $total_prib = 0;
+                for ($i = 1; $i <=12; $i++) {
+                    $exp_var_name = 'exp_' . $i; $prib_var_name = 'prib_' . $i;
+                    $total_exp += $model->{$exp_var_name} * 0.94 -  $total['exp'][$i];
+                    $total_prib += $model->{$prib_var_name} * 0.94 -  $total['prib'][$i];
+                    ?>
                 <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
+                    <strong><p class="mt-2"><?= $model->{$exp_var_name} * 0.94 -  $total['exp'][$i] ?></p></strong>
+                    <strong><p><?= $model->{$exp_var_name} * 0.94 - $total['prib'][$i] ?></p></strong>
                 </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
-                <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2">54000</p></strong>
-                    <strong><p>54000</p></strong>
-                </div>
+                <? } ?>
             </div>
         </div>
     </div>
     <div class="row h-10 border border-1 rounded mt-3">
         <div class="d-flex justify-content-start">
-            <p class="h4 m-4">ИТОГОВАЯ ПРИБЫЛЬ ЗА ГОД: <span class="text-success">1 231 123 руб.</span></p>
+            <p class="h4 m-4">ИТОГОВАЯ ПРИБЫЛЬ ПО ПЛАНУ: <span class="text-success"><?= $total_exp ?> рублей</span></p>
+            <p class="h4 m-4">ИТОГОВАЯ ПРИБЫЛЬ ПО ФАКТУ: <span class="text-success"><?= $total_prib ?>рублей</span></p>
         </div>
     </div>
     

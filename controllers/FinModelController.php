@@ -7,6 +7,7 @@ use app\models\Cultura;
 use app\models\Expense;
 use app\models\FinModel;
 use app\models\forms\FinModelForm;
+use app\models\forms\FinUpdateForm;
 use app\models\search\FinModel as FinModelSearch;
 use app\models\Sort;
 use yii\data\ArrayDataProvider;
@@ -62,9 +63,10 @@ class FinModelController extends Controller
      */
     public function actionView($id)
     {
-        
+        $expenses = Expense::find()->where(['fin_model_id' => $id])->all();
         return $this->render('view', [
             'model' => $this->findModel($id),
+            'expenses' => $expenses
         ]);
     }
 
@@ -85,6 +87,33 @@ class FinModelController extends Controller
         return $this->render('create', [
             'model' => $model,
             'sort_id' => $sort_id
+        ]);
+    }
+
+    public function actionUpdateIncome($id) 
+    {
+        $model = new FinUpdateForm();
+        $originModel = FinModel::findOne($id);
+        for ($i = 1; $i <=12; $i++) { 
+            $exp_var_name = 'exp_' . $i; 
+            $prib_var_name = 'prib_' . $i; 
+            $model->{$exp_var_name} = $originModel->{$exp_var_name};
+            $model->{$prib_var_name} = $originModel->{$exp_var_name};
+        }
+        if ($this->request->isPost && $model->load($this->request->post())) {
+            for ($i = 1; $i <=12; $i++) { 
+                $exp_var_name = 'exp_' . $i; 
+                $prib_var_name = 'prib_' . $i; 
+                $originModel->{$exp_var_name} = $model->{$exp_var_name};
+                $originModel->{$prib_var_name} = $model->{$exp_var_name};
+            }
+            $originModel->save();
+            return $this->redirect(['view', 'id' => $id]);
+        }
+
+        return $this->render('update-income', [
+            'model' => $model,
+            'id' => $id
         ]);
     }
 

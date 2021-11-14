@@ -1,27 +1,23 @@
 <?php
 
+use app\models\FinModel;
+use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
-use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\Expense */
-/* @var $form yii\widgets\ActiveForm */
-?>
+/* @var $model app\models\FinModel */
 
+$this->title = 'Изменение дохода финансовой модели: ' . FinModel::findOne($id)->name;
+$this->params['breadcrumbs'][] = ['label' => 'Fin Models', 'url' => ['index']];
+$this->params['breadcrumbs'][] = 'Изменение';
+?>
 <style>
-    .form-group {
+    .mb-3 {
         margin: 10px;
     }
 </style>
-
-<div class="expense-form col-10 d-flex flex-column">
-
+<div class="fin-model-update col-10 d-flex flex-column">
     <?php $form = ActiveForm::begin(); ?>
-    <div class="col-6">
-        <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
-        <?= $form->field($model, 'price')->textInput()->hint('Если уже имеется в наличии, укажите стоимость 0') ?>
-    </div>
-   
     <div class="d-flex flex-row">
         <div class="flex-column">
             <?= $form->field($model, 'exp_1')->textInput() ?>
@@ -87,5 +83,4 @@ use yii\widgets\ActiveForm;
     </div>
 
     <?php ActiveForm::end(); ?>
-
 </div>
