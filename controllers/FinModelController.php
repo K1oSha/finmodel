@@ -94,18 +94,13 @@ class FinModelController extends Controller
     {
         $model = new FinUpdateForm();
         $originModel = FinModel::findOne($id);
-        for ($i = 1; $i <=12; $i++) { 
-            $exp_var_name = 'exp_' . $i; 
-            $prib_var_name = 'prib_' . $i; 
-            $model->{$exp_var_name} = $originModel->{$exp_var_name};
-            $model->{$prib_var_name} = $originModel->{$exp_var_name};
-        }
+        $model->setAttributes($originModel->attributes);
         if ($this->request->isPost && $model->load($this->request->post())) {
             for ($i = 1; $i <=12; $i++) { 
                 $exp_var_name = 'exp_' . $i; 
                 $prib_var_name = 'prib_' . $i; 
                 $originModel->{$exp_var_name} = $model->{$exp_var_name};
-                $originModel->{$prib_var_name} = $model->{$exp_var_name};
+                $originModel->{$prib_var_name} = $model->{$prib_var_name};
             }
             $originModel->save();
             return $this->redirect(['view', 'id' => $id]);
