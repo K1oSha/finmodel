@@ -112,6 +112,7 @@ class FinModelController extends Controller
                     $expense->{$exp_var_name} = 6000;
                 }
                 $expense->price = 10000000;
+                $expense->in_stock = 1;
                 $expense->fin_model_id = $model->id;
                 $expense->save();
                 $expense = new Expense();
