@@ -78,7 +78,7 @@ class Expense extends \yii\db\ActiveRecord
             'fin_model_id' => 'Fin Model ID',
             'exp_1' => 'План Месяц 1',
             'prib_1' => 'Факт Месяц 1',
-            'price' => 'Стоимость покупки',
+            'price' => 'Стоимость покупки (руб.)',
             'exp_2' => 'План Месяц 2',
             'prib_2' => 'Факт Месяц 2',
             'exp_3' => 'План Месяц 3',

@@ -133,6 +133,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <br/>
     <br/>
     <br/>
+
+    <div style="float:right">
+    <?
+        echo Html::a('<i class="fa fa-4x fa-file-pdf text-danger"></i>', ['/fin-model/get-pdf', 'id'=>$model->id], [
+        'target'=>'_blank', 
+        'data-toggle'=>'tooltip', 
+        'title'=>'Экспортировать в PDF'
+        ]);
+    ?>
+    </div>
     <div class="row h-10 mt-3">
     <h1 class="text-primary mega-label">ДОХОДЫ</h1>
         <div class="d-flex justify-content-start">
@@ -547,8 +557,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     $total_prib += $model->{$prib_var_name} * 0.94 -  $total['prib'][$i];
                     ?>
                 <div class="d-flex align-items-center flex-column fin-item">
-                    <strong><p class="mt-2"><?= $model->{$exp_var_name} * 0.94 -  $total['exp'][$i] ?></p></strong>
-                    <strong><p><?= $model->{$exp_var_name} * 0.94 - $total['prib'][$i] ?></p></strong>
+                    <strong><p id="exp_<?= $i?>" class="mt-2"><?= $model->{$exp_var_name} * 0.94 -  $total['exp'][$i] ?></p></strong>
+                    <strong><p id="prib_<?= $i?>"><?= $model->{$exp_var_name} * 0.94 - $total['prib'][$i] ?></p></strong>
                 </div>
                 <? } ?>
             </div>
@@ -560,5 +570,7 @@ $this->params['breadcrumbs'][] = $this->title;
             <p class="h4 m-4">ИТОГОВАЯ ПРИБЫЛЬ ПО ФАКТУ: <span class="text-success"><?= $total_prib ?>рублей</span></p>
         </div>
     </div>
-    
+    <h4 class="mt-4 mb-2">График чистой прибыли</h4>
+    <canvas id="planChart"></canvas>
+    <canvas id="factChart"></canvas>
 </div>
