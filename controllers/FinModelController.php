@@ -83,9 +83,76 @@ class FinModelController extends Controller
         $model = new FinModel();
         $model->sort_id = $sort_id;
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post()) && $model->validate())
+            {
+                $model->save();
+                $sort = Sort::findOne($model->sort_id);
+                $total_profit = ($sort->profit / 10) * $sort->price * $model->area;
+                $model->exp_9 = $total_profit / 3;
+                $model->exp_10 = $total_profit / 3;
+                $model->exp_11 = $total_profit / 3;
+                $expense = new Expense();
+                $expense->name = "Заработная плата";
+                for ($i = 1; $i <=12; $i++) { 
+                    $exp_var_name = 'exp_' . $i; 
+                    $expense->{$exp_var_name} = 15000;
+                }
+                $expense->exp_4 = 40000 * 3;
+                $expense->exp_5 = 40000 * 3;
+                $expense->price = 0;
+                $expense->fin_model_id = $model->id;
+                $expense->save();
+                $expense = new Expense();
+                $expense->name = "Трактор AXION 950-920";
+                for ($i = 1; $i <=12; $i++) { 
+                    $exp_var_name = 'exp_' . $i; 
+                    $expense->{$exp_var_name} = 6000;
+                }
+                $expense->price = 10000000;
+                $expense->fin_model_id = $model->id;
+                $expense->save();
+                $expense = new Expense();
+                $expense->name = "Вода";
+                for ($i = 4; $i <=9; $i++) { 
+                    $exp_var_name = 'exp_' . $i; 
+                    $expense->{$exp_var_name} = 3 * $model->area * $model->water_price;
+                }
+                $expense->fin_model_id = $model->id;
+                $expense->price = 0;
+                $expense->save();
+                $expense = new Expense();
+                $expense->name = "Электричество";
+                for ($i = 1; $i <=12; $i++) { 
+                    $exp_var_name = 'exp_' . $i; 
+                    $expense->{$exp_var_name} = 600 * $model->electro_price;
+                }
+                for ($i = 1; $i <= 3; $i++) { 
+                    $exp_var_name = 'exp_' . $i; 
+                    $expense->{$exp_var_name} = 300 * $model->electro_price;
+                }
+                for ($i = 9; $i <=12; $i++) { 
+                    $exp_var_name = 'exp_' . $i; 
+                    $expense->{$exp_var_name} = 600 * $model->electro_price;
+                }
+                $expense->fin_model_id = $model->id;
+                $expense->price = 0;
+                $expense->save();
+                $expense = new Expense();
+                $expense->name = "Возделывание";
+                $total = 5 * 10000 * $model->area;
+                for ($i = 4; $i <=5; $i++) { 
+                    $exp_var_name = 'exp_' . $i; 
+                    $expense->{$exp_var_name} = $total / 2;
+                }
+                $expense->fin_model_id = $model->id;
+                $expense->price = 0;
+                $expense->save();
+                $model->save();
+                if ($model->save()) {
+                    return $this->redirect(['view', 'id' => $model->id]);
+                }
             }
+
         }
         \Yii::$app->session['check'] = $model;
         return $this->render('create', [

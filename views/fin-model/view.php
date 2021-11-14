@@ -134,12 +134,20 @@ $this->params['breadcrumbs'][] = $this->title;
     <br/>
     <br/>
 
-    <div style="float:right">
+    <div style="float:right" class="mb-5">
     <?
         echo Html::a('<i class="fa fa-4x fa-file-pdf text-danger"></i>', ['/fin-model/get-pdf', 'id'=>$model->id], [
         'target'=>'_blank', 
         'data-toggle'=>'tooltip', 
         'title'=>'Экспортировать в PDF'
+        ]);
+    ?>
+    <?
+        echo Html::a('<i class="fa fa-4x fa-file-excel text-success"></i>', '#', [
+        'target'=>'_blank', 
+        'style' => 'margin-left: 20px;',
+        'data-toggle'=>'tooltip', 
+        'title'=>'Экспортировать в Excel'
         ]);
     ?>
     </div>
@@ -558,7 +566,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     ?>
                 <div class="d-flex align-items-center flex-column fin-item">
                     <strong><p id="exp_<?= $i?>" class="mt-2"><?= $model->{$exp_var_name} * 0.94 -  $total['exp'][$i] ?></p></strong>
-                    <strong><p id="prib_<?= $i?>"><?= $model->{$exp_var_name} * 0.94 - $total['prib'][$i] ?></p></strong>
+                    <strong><p id="prib_<?= $i?>"><?= $model->{$prib_var_name} * 0.94 - $total['prib'][$i] ?></p></strong>
                 </div>
                 <? } ?>
             </div>
