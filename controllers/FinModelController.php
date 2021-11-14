@@ -182,10 +182,8 @@ class FinModelController extends Controller
 
     public function actionCapital($id)
     {
-
-
         $arrayCapital = Expense::find()->where(['in_stock' => 1, 'fin_model_id' => $id])->all();
-
+        $dataProvider = new ArrayDataProvider(['allModels' => $arrayCapital]);
         $itogo = 0;
 
         foreach ($arrayCapital as $one)
@@ -193,7 +191,23 @@ class FinModelController extends Controller
 
         return $this->render('capital', [
             'itogo' => $itogo,
-            'arrayCapital' => $arrayCapital
+            'dataProvider' => $dataProvider
+        ]);
+    }
+
+    public function actionEconomy($id)
+    {
+        $model = $this->findModel($id);
+        $sort = Sort::findOne($model->sort_id);
+        $cultura = Cultura::findOne($sort->cultura_id);
+        $nameCulturi = $cultura->name.' "'.$sort->name.'"';
+        $averangePrice = 66;
+        $priceFromRossStat = 35;
+
+        return $this->render('economy', [
+            'nameCulturi' => $nameCulturi,
+            'averangePrice' => $averangePrice,
+            'priceFromRossStat' => $priceFromRossStat,
         ]);
     }
 
