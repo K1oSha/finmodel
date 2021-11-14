@@ -46,6 +46,7 @@ class FinUpdateForm extends ActiveRecord
     public function rules()
     {
         return [
+            [['exp_1', 'prib_1', 'exp_2', 'prib_2', 'exp_3', 'prib_3', 'exp_4', 'prib_4', 'prib_5', 'exp_5', 'prib_6', 'exp_6', 'exp_7', 'prib_7', 'exp_8', 'prib_8', 'exp_9', 'prib_9', 'exp_10', 'prib_10', 'exp_11', 'prib_11', 'prib_12', 'exp_12'], 'number'],
         ];
     }
 
