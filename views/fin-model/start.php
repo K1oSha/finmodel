@@ -50,8 +50,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'plus',
                 'minus',
                 'profit',
-                'tovarnost',
-                'lejcost',
+                [
+                    'attribute' => 'tovarnost',
+                    'label' =>  '<span data-bs-toggle="tooltip" data-bs-placement="top" title="Количество продукции, которое попадает на рынок">
+                    Товарность <i class="far fa-question-circle"></i>
+                  </span>',
+                    'encodeLabel' => false
+                ],
+                [
+                    'attribute' => 'lejcost',
+                    'label' =>  '<span data-bs-toggle="tooltip" data-bs-placement="top" title="Сохраняемость собранной продукции в нормальных условиях">
+                    Лежкость <i class="far fa-question-circle"></i>
+                  </span>',
+                    'encodeLabel' => false
+                ],
                 'time_grow',
                 ['class' => 'yii\grid\ActionColumn', 
                 'template' => '{create}',
@@ -84,8 +96,20 @@ $this->params['breadcrumbs'][] = $this->title;
                 'plus',
                 'minus',
                 'profit',
-                'tovarnost',
-                'lejcost',
+                [
+                    'attribute' => 'tovarnost',
+                    'label' =>  '<span data-bs-toggle="tooltip" data-bs-placement="top" title="Количество продукции, которое попадает на рынок">
+                    Товарность <i class="far fa-question-circle"></i>
+                  </span>',
+                    'encodeLabel' => false
+                ],
+                [
+                    'attribute' => 'lejcost',
+                    'label' =>  '<span data-bs-toggle="tooltip" data-bs-placement="top" title="Сохраняемость собранной продукции в нормальных условиях">
+                    Лежкость <i class="far fa-question-circle"></i>
+                  </span>',
+                    'encodeLabel' => false
+                ],
                 'time_grow',
                 ['class' => 'yii\grid\ActionColumn', 
                 'template' => '{create}',
@@ -110,8 +134,20 @@ $this->params['breadcrumbs'][] = $this->title;
                         'plus',
                         'minus',
                         'profit',
-                        'tovarnost',
-                        'lejcost',
+                        [
+                            'attribute' => 'tovarnost',
+                            'label' =>  '<span data-bs-toggle="tooltip" data-bs-placement="top" title="Количество продукции, которое попадает на рынок">
+                            Товарность <i class="far fa-question-circle"></i>
+                          </span>',
+                            'encodeLabel' => false
+                        ],
+                        [
+                            'attribute' => 'lejcost',
+                            'label' =>  '<span data-bs-toggle="tooltip" data-bs-placement="top" title="Сохраняемость собранной продукции в нормальных условиях">
+                            Лежкость <i class="far fa-question-circle"></i>
+                          </span>',
+                            'encodeLabel' => false
+                        ],
                         'time_grow',
                         ['class' => 'yii\grid\ActionColumn', 
                         'template' => '{create}',
