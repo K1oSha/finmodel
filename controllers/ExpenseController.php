@@ -35,14 +35,16 @@ class ExpenseController extends Controller
      * Lists all Expense models.
      * @return mixed
      */
-    public function actionIndex()
+    public function actionIndex($fin_model_id)
     {
         $searchModel = new ExpenseSearch();
+        $searchModel->fin_model_id = $fin_model_id;
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
             'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
+            'fin_model_id' => $fin_model_id
         ]);
     }
 
@@ -64,16 +66,19 @@ class ExpenseController extends Controller
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate()
+    public function actionCreate($fin_model_id)
     {
         $model = new Expense();
 
         if ($this->request->isPost) {
-            if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+            if ($model->load($this->request->post())) {
+                $model->fin_model_id = $fin_model_id;
+                if ($model->save()) {
+                    return $this->redirect(['/fin-model/view', 'id' => $model->fin_model_id]);
+
+                }
+
             }
-        } else {
-            $model->loadDefaultValues();
         }
 
         return $this->render('create', [
@@ -93,7 +98,7 @@ class ExpenseController extends Controller
         $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['/fin-model/view', 'id' => $model->fin_model_id]);
         }
 
         return $this->render('update', [
